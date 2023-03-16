@@ -44,18 +44,18 @@ router.post('/login', async (req, res) => {
     if (!isMatch) {
       return res.status(401).json({ message: 'Nombre de usuario o contraseña incorrectos' });
     }
- 
+
     // Generar un JWT
     const token = jwt.sign(
       { userId: user._id, username: user.username, role: user.role },
       'mi_secreto',
       { expiresIn: '1h' }
     );
- 
+
     res.status(200).json({ token });
   } catch (error) {
     res.status(500).json({ message: 'Error al iniciar sesión' });
   }
- });
+});
 
- module.exports = router;
+module.exports = router;

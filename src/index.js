@@ -20,12 +20,12 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: false }));
 
-app.get("/", (req, res) => {
+app.get("/api/v1/", (req, res) => {
   res.json({ "Biembenido": "Usuario" })
 })
 
-app.use('/auth', authRouter);
-app.use('/admin', adminRouter);
+app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/admin', adminRouter);
 
 
 // Iniciar el servidor
