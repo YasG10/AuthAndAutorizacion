@@ -1,19 +1,17 @@
 const express = require('express');
-const mongoose = require('mongoose');
+
 const morgan = require("morgan")
 const cors = require('cors');
 const authRouter = require('./routes/auth.js');
 const adminRouter = require('./routes/admin.js');
+const  {mongoConnection} = require('./database/database.js');
 
 const app = express();
 
 app.use(morgan('dev'))
 
 // Conexión a la base de datos
-mongoose.connect('mongodb://localhost:3001/loginChat', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoConnection();
 
 // Configuración de CORS
 app.use(cors());
